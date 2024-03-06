@@ -47,11 +47,11 @@ async function init(){
 
     try{
       user = await user_model.create({
-        name : "Mohith",
+        name : "Vishwa",
         userId : "admin",
-        email : "msarank@gmail.com",
+        email : "kankvish@gmail.com",
         userType : "ADMIN",
-        password : bcrypt.hashSync("Welcome",8)
+        password : bcrypt.hashSync("Welcome1",8)
       })
       console.log("Admin created ", user)
 
@@ -67,6 +67,7 @@ async function init(){
  */
 
 require("./routes/auth.routes")(app)
+require("./routes/category.routes")(app)
 
 /**
  * Start the server

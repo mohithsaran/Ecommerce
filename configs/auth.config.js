@@ -1,3 +1,3 @@
-module.exports={
-    secret:"This is private secret"
+module.exports = {
+    secret : "This is my super private secret"
 }
