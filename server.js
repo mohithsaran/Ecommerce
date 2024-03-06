@@ -9,7 +9,8 @@ const db_config  = require("./configs/db.config")
 const user_model = require("./models/user.model")
 const bcrypt = require("bcryptjs")
 
-
+// Req is in the form of JSON and App is in the form express Js need to convert it to JSON format
+app.use(express.json())
 /**
  * Create an admin user at the starting of the application
  * if not already present
@@ -46,7 +47,7 @@ async function init(){
     try{
       user = await user_model.create({
         name : "Mohith",
-        userId : "Saran",
+        userId : "admin",
         email : "msarank@gmail.com",
         userType : "ADMIN",
         password : bcrypt.hashSync("Welcome",8)
@@ -64,7 +65,7 @@ async function init(){
  * Stich the route to the server
  */
 
-
+require("./routes/auth.routes")(app)
 
 /**
  * Start the server
