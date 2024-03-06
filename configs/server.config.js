@@ -2,5 +2,5 @@
  * This file will contain the server configurations
  */
 module.exports = {
-    PORT : 8888
+    PORT : 8080
 }
