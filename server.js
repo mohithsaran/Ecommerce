@@ -4,13 +4,14 @@
 const express = require("express")
 const mongoose = require("mongoose")
 const app = express()
-const server_config = require("./configs/server.configs")
+const server_config = require("./configs/server.config")
 const db_config  = require("./configs/db.config")
 const user_model = require("./models/user.model")
 const bcrypt = require("bcryptjs")
 
-// Req is in the form of JSON and App is in the form express Js need to convert it to JSON format
 app.use(express.json())
+
+
 /**
  * Create an admin user at the starting of the application
  * if not already present
@@ -46,11 +47,11 @@ async function init(){
 
     try{
       user = await user_model.create({
-        name : "Mohith",
+        name : "Vishwa",
         userId : "admin",
-        email : "msarank@gmail.com",
+        email : "kankvish@gmail.com",
         userType : "ADMIN",
-        password : bcrypt.hashSync("Welcome",8)
+        password : bcrypt.hashSync("Welcome1",8)
       })
       console.log("Admin created ", user)
 
