@@ -32,3 +32,63 @@ exports.createNewCategory = async (req, res)=>{
 
     //return the response of the created category
 }
+
+exports.readCategory=async(req,res)=>{
+    const req_body=req.body
+    const cat_read=await category_model.find()
+    try{
+        res.status(200).send(cat_read)
+    }
+    catch(err){
+        res.status(500).send({
+            message:"Cannot find Categories"
+        })
+    }
+
+}
+
+exports.readCategoryById=async(req,res)=>{
+    const {id}=req.params
+    try{
+        const cat_id=await category_model.findById(id)
+        res.status(200).send(cat_id)
+
+    }
+    catch(err){
+        res.status(500).send({
+            message:"Cannot find by this Id"
+        })
+    }
+}
+
+
+exports.updateCategoryById=async(req,res)=>{
+    const {id}=req.params
+    try{
+        const cat_up=await category_model.findByIdAndUpdate(id)
+        res.status(200).json(cat_up)
+    }
+    catch(err){
+        res.status(500).send({
+            message:"Cannot update the id, please check the id"
+        })
+    }
+
+}
+
+exports.deleteCategoryById=async(req,res)=>{
+    const {id}=req.params
+    try{
+        const cat_del=await category_model.findByIdAndDelete(id)
+        res.status(200).send({
+            message:`Deleted the category By Id: ${id}`
+        })
+
+    }
+    catch(err){
+        res.status(500).send({
+            message:"Cannot delete this category. Please check the Id of the category"
+        })
+
+    }
+}
